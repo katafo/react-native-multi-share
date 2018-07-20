@@ -56,8 +56,7 @@ RCT_EXPORT_MODULE()
     UIImage *image = [UIImage imageWithData:data];
     [items addObject:image];
   } else {
-    UIImage *image = [UIImage imageWithContentsOfFile:URL.path];
-    [items addObject:image];
+    [items addObject:URL];
   }
 }
 
@@ -100,7 +99,7 @@ RCT_EXPORT_METHOD(showShareActionSheetWithOptions:(NSDictionary *)options
     RCTLogError(@"No `url` or `message` to share");
     return;
   }
-  
+  NSLog(@"SHARE          ", items);
   UIActivityViewController *shareController = [[UIActivityViewController alloc] initWithActivityItems:items applicationActivities:nil];
   
   NSString *subject = [RCTConvert NSString:options[@"subject"]];
